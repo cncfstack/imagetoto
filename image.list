@@ -1,5 +1,1 @@
-ghcr.io/umami-software/umami:postgresql-latest
-docker.io/library/postgres:15-alpine
-docker.io/discourse/base:2.0.20250226-0128
-docker.io/discourse/base:aarch64
-docker.io/discourse/mail-receiver:release
+docker.io/gitea/gitea:1.21.1
