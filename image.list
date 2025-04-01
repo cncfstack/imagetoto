@@ -1,1 +1,1 @@
-docker.io/gitea/gitea:1.21.1
+docker.io/library/postgres:14
