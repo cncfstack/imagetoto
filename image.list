@@ -1,2 +1,1 @@
-docker.io/casbin/casdoor-all-in-one
-docker.io/casbin/casdoor:latest
+docker.io/library/mysql:8.0.25
