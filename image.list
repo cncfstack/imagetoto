@@ -1,1 +1,2 @@
-casbin/casdoor-all-in-one
+docker.io/casbin/casdoor-all-in-one
+docker.io/casbin/casdoor:latest
