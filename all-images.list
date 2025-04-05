@@ -60,3 +60,4 @@ docker.io/gitea/gitea:1.21.1
 docker.io/library/postgres:14
 docker.io/casbin/casdoor-all-in-one
 docker.io/casbin/casdoor:latest
+docker.io/library/mysql:8.0.25
