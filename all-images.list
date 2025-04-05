@@ -61,3 +61,6 @@ docker.io/library/postgres:14
 docker.io/casbin/casdoor-all-in-one
 docker.io/casbin/casdoor:latest
 docker.io/library/mysql:8.0.25
+docker.io/bitnami/postgresql:latest
+docker.io/bitnami/redis:latest
+docker.io/bitnami/discourse:3
