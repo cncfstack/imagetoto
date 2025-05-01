@@ -1,43 +1,26 @@
 name: imageToTo
-
 on:
   push:
     branches: [ "main" ]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
-
-      # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
-
           sudo docker login  --username=${{ secrets.HARBOR_USER }} --password=${{ secrets.HARBOR_PWD }} harbor.cloud.cncfstack.com
-
           for img in `cat image.list`
           do
               sudo docker pull $img
-
               if [ $? -ne 0 ];then
                   echo "pull error $img" >>  tmpfile
                   continue
               fi
-
               sudo docker tag $img harbor.cloud.cncfstack.com/$img
               sudo docker push harbor.cloud.cncfstack.com/$img
           done
-
           if [ -f tmpfile ];then
              cat tmpfile
           fi
