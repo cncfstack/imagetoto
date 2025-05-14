@@ -122,3 +122,4 @@ docker.io/minio/minio:RELEASE.2025-04-03T14-56-28Z
 docker.io/minio/minio:RELEASE.2025-03-12T18-04-18Z
 docker.io/bitnami/discourse:3.4.2
 docker.io/corentinth/it-tools:latest
+docker.io/rancher/rancher:latest
