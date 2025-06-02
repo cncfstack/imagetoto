@@ -29,7 +29,7 @@ jobs:
           skopeo login  --username=${{ secrets.HARBOR_USER }} --password=${{ secrets.HARBOR_PWD }} harbor.cncfstack.com
           for img in `cat image.list`
           do
-              skopeo copy --multi-arch all docker://img  docker://harbor.cncfstack.com/$img
+              skopeo copy --multi-arch all docker://$img  docker://harbor.cncfstack.com/$img
               if [ $? -ne 0 ];then
                   echo "pull error $img" >>  tmpfile
                   continue
