@@ -10,16 +10,30 @@ jobs:
       - uses: actions/checkout@v4
       - name: Run a multi-line script
         run: |
-          sudo docker login  --username=${{ secrets.HARBOR_USER }} --password=${{ secrets.HARBOR_PWD }} harbor.cncfstack.com
+          # sudo docker login  --username=${{ secrets.HARBOR_USER }} --password=${{ secrets.HARBOR_PWD }} harbor.cncfstack.com
+          # for img in `cat image.list`
+          # do
+          #     sudo docker pull $img
+          #     if [ $? -ne 0 ];then
+          #         echo "pull error $img" >>  tmpfile
+          #         continue
+          #     fi
+          #     sudo docker tag $img harbor.cncfstack.com/$img
+          #     sudo docker push harbor.cncfstack.com/$img
+          # done
+          # if [ -f tmpfile ];then
+          #    cat tmpfile
+          # fi
+          sudo apt-get -y update
+          sudo apt-get -y install skopeo
+          skopeo login  --username=${{ secrets.HARBOR_USER }} --password=${{ secrets.HARBOR_PWD }} harbor.cncfstack.com
           for img in `cat image.list`
           do
-              sudo docker pull $img
+              skopeo copy --multi-arch all docker://img  docker://harbor.cncfstack.com/$img
               if [ $? -ne 0 ];then
                   echo "pull error $img" >>  tmpfile
                   continue
               fi
-              sudo docker tag $img harbor.cncfstack.com/$img
-              sudo docker push harbor.cncfstack.com/$img
           done
           if [ -f tmpfile ];then
              cat tmpfile
