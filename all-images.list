@@ -124,4 +124,4 @@ docker.io/bitnami/discourse:3.4.2
 docker.io/corentinth/it-tools:latest
 docker.io/rancher/rancher:latest
 squidfunk/mkdocs-material:9.6.14
-docker.io/renhai/sgcc_electricity
+docker.io/renhai/sgcc_electricity:latest
