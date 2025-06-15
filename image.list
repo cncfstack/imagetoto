@@ -1,1 +1,4 @@
-docker.io/casbin/casdoor:v1.931.0
+docker.io/rancher/shell:v0.4.0
+docker.io/rancher/rancher-agent:v2.11.1
+docker.io/rancher/mirrored-coredns-coredns:1.12.0
+docker.io/rancher/mirrored-pause:3.6
