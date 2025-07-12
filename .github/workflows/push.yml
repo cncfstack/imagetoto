@@ -34,11 +34,7 @@ jobs:
                   -u ${{ secrets.HARBOR_PUSH_USERNAME }}:${{ secrets.HARBOR_PUSH_PASSWORD }} \
                   -d '{"project_name": "'${img_project}'", "public": true}'
 
-              skopeo copy --multi-arch all docker://$img  docker://harbor.cncfstack.com/$img_name
-              if [ $? -ne 0 ];then
-                  echo "pull error $img" >>  tmpfile
-                  continue
-              fi
+              skopeo copy --multi-arch all docker://$img  docker://harbor.cncfstack.com/$img_name || echo "pull error $img" >>  tmpfile
           done
 
           # 处理完成后，需要更新 done.db 文件行数
