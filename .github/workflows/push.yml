@@ -12,8 +12,8 @@ jobs:
         run: |
           sudo apt-get -y update
           sudo apt-get -y install skopeo
-          skopeo login  --username=${{ secrets.HARBOR_USER }} --password=${{ secrets.HARBOR_PWD }} harbor.cncfstack.com
-          for img in `cat image.list`
+          skopeo login  --username=${{ secrets.HARBOR_PUSH_USER }} --password=${{ secrets.HARBOR_PUSH_PWD }} harbor.cncfstack.com
+          for img in `cat images.list`
           do
               # 删除镜像仓库的地址信息，如删除掉docker.io只保留后面仓库的信息
               noreg_img="${img#*/}"
