@@ -10,26 +10,23 @@ jobs:
       - uses: actions/checkout@v4
       - name: Run a multi-line script
         run: |
-          # sudo docker login  --username=${{ secrets.HARBOR_USER }} --password=${{ secrets.HARBOR_PWD }} harbor.cncfstack.com
-          # for img in `cat image.list`
-          # do
-          #     sudo docker pull $img
-          #     if [ $? -ne 0 ];then
-          #         echo "pull error $img" >>  tmpfile
-          #         continue
-          #     fi
-          #     sudo docker tag $img harbor.cncfstack.com/$img
-          #     sudo docker push harbor.cncfstack.com/$img
-          # done
-          # if [ -f tmpfile ];then
-          #    cat tmpfile
-          # fi
           sudo apt-get -y update
           sudo apt-get -y install skopeo
           skopeo login  --username=${{ secrets.HARBOR_USER }} --password=${{ secrets.HARBOR_PWD }} harbor.cncfstack.com
           for img in `cat image.list`
           do
+              # 删除镜像仓库的地址信息，如删除掉docker.io只保留后面仓库的信息
+              noreg_img="${img#*/}"
+
+              # 场景1: 保留镜像仓库信息，在查询时便于在目标Harbor中知道该镜像来源于哪里
               skopeo copy --multi-arch all docker://$img  docker://harbor.cncfstack.com/$img
+              if [ $? -ne 0 ];then
+                  echo "pull error $img" >>  tmpfile
+                  continue
+              fi
+
+              # 场景2: 不保留镜像仓库信息，使目标和源保持相同的层级，在使用时可以直接通过替换镜像仓库地址。在一些项目中全局修改镜像仓库配置很有用
+              skopeo copy --multi-arch all docker://$img  docker://harbor.cncfstack.com/$noreg_img
               if [ $? -ne 0 ];then
                   echo "pull error $img" >>  tmpfile
                   continue
