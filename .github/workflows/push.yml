@@ -16,8 +16,7 @@ jobs:
           skopeo login  --username=${{ secrets.HARBOR_PUSH_USERNAME }} --password=${{ secrets.HARBOR_PUSH_PASSWORD }} harbor.cncfstack.com
           for img in `cat images.list`
           do
-              # 删除镜像仓库的地址信息，如删除掉docker.io只保留后面仓库的信息
-              noreg_img="${img#*/}"
+
 
               # 场景1: 保留镜像仓库信息，在查询时便于在目标Harbor中知道该镜像来源于哪里
               skopeo copy --multi-arch all docker://$img  docker://harbor.cncfstack.com/$img
@@ -26,8 +25,19 @@ jobs:
                   continue
               fi
 
+
+
               # 场景2: 不保留镜像仓库信息，使目标和源保持相同的层级，在使用时可以直接通过替换镜像仓库地址。在一些项目中全局修改镜像仓库配置很有用
-              skopeo copy --multi-arch all docker://$img  docker://harbor.cncfstack.com/$noreg_img
+              img_project="${img%%/*}" 
+              img_name="${img#*/}"
+
+              # 创建项目
+              curl -k -X POST "https://harbor.cncfstack.com/api/v2.0/projects" \
+                  --header "Content-Type: application/json" \
+                  -u ${{ secrets.HARBOR_PUSH_USERNAME }}:${{ secrets.HARBOR_PUSH_PASSWORD }} \
+                  -d '{"project_name": "'${img_project}'", "public": true}'
+
+              skopeo copy --multi-arch all docker://$img  docker://harbor.cncfstack.com/$img_name
               if [ $? -ne 0 ];then
                   echo "pull error $img" >>  tmpfile
                   continue
