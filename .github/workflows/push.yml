@@ -36,4 +36,3 @@ jobs:
           if [ -f tmpfile ];then
              cat tmpfile
           fi
-        run: echo "hello world"
