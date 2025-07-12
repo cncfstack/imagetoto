@@ -1,1 +1,2 @@
-docker.io/bitnami/discourse:3.4.5
+ghcr.io/backstage/backstage:2.6.0
+
