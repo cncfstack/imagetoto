@@ -4,6 +4,7 @@ on:
     branches: [ "main" ]
     paths-ignore:
       - 'done.db'
+      - 'error.log'
   workflow_dispatch:
 jobs:
   build:
@@ -21,6 +22,8 @@ jobs:
           done_line=`cat done.db`
           next_line=$(($done_line + 1)) 
 
+          echo '' > error.log
+
           for img in `tail -n +$next_line images.list`
           do
               # 删除镜像仓库的地址信息，如删除掉docker.io只保留后面仓库的信息
@@ -34,14 +37,14 @@ jobs:
                   -u ${{ secrets.HARBOR_PUSH_USERNAME }}:${{ secrets.HARBOR_PUSH_PASSWORD }} \
                   -d '{"project_name": "'${img_project}'", "public": true}'
 
-              skopeo copy --multi-arch all docker://$img  docker://harbor.cncfstack.com/$img_name || echo "pull error $img" >>  tmpfile
+              skopeo copy --multi-arch all docker://$img  docker://harbor.cncfstack.com/$img_name || echo "pull error $img" >>  error.log
           done
 
           # 处理完成后，需要更新 done.db 文件行数
-          wc -l images.list > done.db
+          cat images.list|wc -l|tr -d ' ' > done.db
 
-          if [ -f tmpfile ];then
-             cat tmpfile
+          if [ -s error.log ];then
+             cat error.log
           fi
       - name: Configure Git
         run: |
