@@ -10,9 +10,10 @@ jobs:
       - uses: actions/checkout@v4
       - name: Run a multi-line script
         run: |
+          set -x
           sudo apt-get -y update
           sudo apt-get -y install skopeo
-          skopeo login  --username=${{ secrets.HARBOR_PUSH_USER }} --password=${{ secrets.HARBOR_PUSH_PWD }} harbor.cncfstack.com
+          skopeo login  --username=${{ secrets.HARBOR_PUSH_USERNAME }} --password=${{ secrets.HARBOR_PUSH_PASSWORD }} harbor.cncfstack.com
           for img in `cat images.list`
           do
               # 删除镜像仓库的地址信息，如删除掉docker.io只保留后面仓库的信息
