@@ -1,7 +1,5 @@
 docker.io/library/nginx:1.27
-docker.io/library/nginx
-docker.io/library/nginx:1.15-alpine
 docker.io/doocs/md:2.0.3
 docker.io/doocs/md:2.0.3-nginx
 docker.io/bitnami/discourse:3.4.6
-ghcr.io/backstage/backstage
+ghcr.io/backstage/backstage:1.40.1

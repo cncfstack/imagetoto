@@ -2,6 +2,8 @@ name: imageToTo
 on:
   push:
     branches: [ "main" ]
+    paths-ignore:
+      - 'done.db'
   workflow_dispatch:
 jobs:
   build:
@@ -17,8 +19,9 @@ jobs:
 
           # 处理已经处理过的镜像的行数
           done_line=`cat done.db`
+          next_line=$(($done_line + 1)) 
 
-          for img in `tail -n +$done_line images.list`
+          for img in `tail -n +$next_line images.list`
           do
               # 删除镜像仓库的地址信息，如删除掉docker.io只保留后面仓库的信息
               img_name="${img#*/}"
@@ -38,6 +41,21 @@ jobs:
               fi
           done
 
+          # 处理完成后，需要更新 done.db 文件行数
+          wc -l images.list > done.db
+
           if [ -f tmpfile ];then
              cat tmpfile
           fi
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+      - name: Commit changes
+        run: |
+          git add .
+          git commit -m "Action Robot: sync images lines [skip ci]"
+          # [skip ci] 避免触发新工作流循环
+      # 5. 推送更改
+      - name: Push changes
+        run: git push origin HEAD:${{ github.ref }}
