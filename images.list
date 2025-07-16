@@ -59,3 +59,4 @@ docker.io/rancher/kubectl:v1.32.2
 docker.io/rancher/mirrored-longhornio-longhorn-manager:v1.8.2
 docker.io/rancher/mirrored-longhornio-longhorn-share-manager:v1.8.2
 docker.io/rancher/mirrored-longhornio-longhorn-ui:v1.8.2
+docker.io/nginx/nginx-ingress:5.0.0
