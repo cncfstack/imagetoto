@@ -54,4 +54,5 @@ docker.io/library/rockylinux:8.9.20231119-minimal
 docker.io/library/almalinux:10.0-20250709
 docker.io/library/almalinux:9.6-20250709
 docker.io/library/almalinux:8.10-20250709
-
+docker.io/rancher/fleet-agent:v0.12.2
+docker.io/rancher/kubectl:v1.32.2
