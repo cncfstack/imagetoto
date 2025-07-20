@@ -60,3 +60,5 @@ docker.io/rancher/mirrored-longhornio-longhorn-manager:v1.8.2
 docker.io/rancher/mirrored-longhornio-longhorn-share-manager:v1.8.2
 docker.io/rancher/mirrored-longhornio-longhorn-ui:v1.8.2
 docker.io/nginx/nginx-ingress:5.0.0
+docker.io/rancher/mirrored-calico-operator
+docker.io/rancher/mirrored-pause:3.6
