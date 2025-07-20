@@ -62,3 +62,6 @@ docker.io/rancher/mirrored-longhornio-longhorn-ui:v1.8.2
 docker.io/nginx/nginx-ingress:5.0.0
 docker.io/rancher/mirrored-calico-operator
 docker.io/rancher/mirrored-pause:3.6
+docker.io/rancher/rancher-agent:v2.11.1
+docker.io/rancher/shell:v0.4.0
+docker.io/rancher/mirrored-coredns-coredns:1.12.0
