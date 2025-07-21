@@ -72,3 +72,4 @@ docker.io/rancher/hardened-kubernetes:v1.32.5-rke2r1-build20250515
 docker.io/rancher/rke2-cloud-provider:v1.32.0-rc3.0.20241220224140-68fbd1a6b543-build20250101
 docker.io/rancher/mirrored-calico-operator:v1.38.0
 docker.io/rancher/mirrored-calico-ctl:v3.30.0
+docker.io/rancher/klipper-helm:v0.9.5-build20250306
