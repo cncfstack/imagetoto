@@ -80,3 +80,8 @@ registry.k8s.io/sig-storage/csi-snapshotter:v8.2.0
 registry.k8s.io/sig-storage/livenessprobe:v2.15.0
 registry.k8s.io/sig-storage/csi-node-driver-registrar:v2.13.0
 registry.k8s.io/sig-storage/snapshot-controller:v8.2.0
+docker.io/rancher/mirrored-calico-cni:v3.30.0
+docker.io/rancher/mirrored-calico-kube-controllers:v3.30.0
+docker.io/rancher/mirrored-calico-node:v3.30.0
+docker.io/rancher/mirrored-calico-pod2daemon-flexvol:v3.30.0
+docker.io/rancher/mirrored-calico-typha:v3.30.0
