@@ -92,3 +92,6 @@ docker.io/rancher/mirrored-sig-storage-snapshot-controller:v8.2.0
 docker.io/rancher/nginx-ingress-controller:v1.12.1-hardened6
 docker.io/rancher/hardened-cluster-autoscaler:v1.10.2-build20250507
 harbor.cncfstack.com/rancher/system-agent:v0.3.12-suc
+quay.io/opstree/redis:v7.0.15
+ghcr.io/ot-container-kit/redis-operator/redis-operator:v0.21.0
+ghcr.io/ot-container-kit/redis-operator/redis-operator
