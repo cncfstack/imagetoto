@@ -91,3 +91,4 @@ docker.io/rancher/hardened-k8s-metrics-server:v0.7.2-build20250507
 docker.io/rancher/mirrored-sig-storage-snapshot-controller:v8.2.0
 docker.io/rancher/nginx-ingress-controller:v1.12.1-hardened6
 docker.io/rancher/hardened-cluster-autoscaler:v1.10.2-build20250507
+harbor.cncfstack.com/rancher/system-agent:v0.3.12-suc
