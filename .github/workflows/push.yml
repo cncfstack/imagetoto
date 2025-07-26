@@ -38,6 +38,9 @@ jobs:
                   -d '{"project_name": "'${img_project}'", "public": true}'
 
               skopeo copy --multi-arch all docker://$img  docker://harbor.cncfstack.com/$img_name || echo "pull error $img" >>  error.log
+              # 不同的平台会集中存储一起，同时会在根目录创建项目
+              skopeo copy --multi-arch all docker://$img  docker://harbor.cncfstack.com/$img || echo "pull error $img" >>  error.log
+
           done
 
           # 处理完成后，需要更新 done.db 文件行数

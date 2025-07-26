@@ -99,3 +99,7 @@ docker.io/library/elasticsearch:9.0.4
 docker.io/library/elasticsearch:8.18.4
 docker.io/library/elasticsearch:7.17.28
 docker.io/library/elasticsearch:8.17.9
+docker.io/library/postgres:14.18
+docker.io/library/postgres:15.13
+docker.io/library/postgres:16.9
+docker.io/library/postgres:17.5
