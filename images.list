@@ -95,3 +95,7 @@ harbor.cncfstack.com/rancher/system-agent:v0.3.12-suc
 quay.io/opstree/redis:v7.0.15
 ghcr.io/ot-container-kit/redis-operator/redis-operator:v0.21.0
 ghcr.io/ot-container-kit/redis-operator/redis-operator
+docker.io/library/elasticsearch:9.0.4
+docker.io/library/elasticsearch:8.18.4
+docker.io/library/elasticsearch:7.17.28
+docker.io/library/elasticsearch:8.17.9
