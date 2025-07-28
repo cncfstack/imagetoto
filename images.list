@@ -103,3 +103,6 @@ docker.io/library/postgres:14.18
 docker.io/library/postgres:15.13
 docker.io/library/postgres:16.9
 docker.io/library/postgres:17.5
+docker.io/library/mysql:8.4.6
+docker.io/library/mysql:8.0.43
+docker.io/library/mysql:5.7.44
