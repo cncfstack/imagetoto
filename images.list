@@ -106,3 +106,11 @@ docker.io/library/postgres:17.5
 docker.io/library/mysql:8.4.6
 docker.io/library/mysql:8.0.43
 docker.io/library/mysql:5.7.44
+docker.io/nacos/nacos-server:v3.0.2
+docker.io/nacos/nacos-server:v2.5.1
+docker.io/nacos/nacos-server:v1.4.8
+docker.io/nacos/nacos-operator:v1.0.1
+docker.io/nacos/nacos-mcp-router:0.2.2
+docker.io/nacos/nacos-mysql:5.7
+docker.io/nacos/nacos-mysql-master:latest
+docker.io/nacos/nacos-peer-finder-plugin:1.1
