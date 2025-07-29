@@ -114,3 +114,4 @@ docker.io/nacos/nacos-mcp-router:0.2.2
 docker.io/nacos/nacos-mysql:5.7
 docker.io/nacos/nacos-mysql-master:latest
 docker.io/nacos/nacos-peer-finder-plugin:1.1
+docker.io/library/golang:alpine
