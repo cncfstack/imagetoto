@@ -119,3 +119,6 @@ docker.io/library/golang:1.24-alpine
 docker.io/library/moby/buildkit:buildx-stable-1
 docker.io/library/golang:1.24.5
 docker.io/library/golang:1.24
+docker.io/library/node:v24.4.1
+docker.io/library/nginx:1.29.0
+docker.io/library/golang:1.24-alpine
